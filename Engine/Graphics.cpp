@@ -309,11 +309,17 @@ void Graphics::BeginFrame()
 
 void Graphics::PutPixel( int x,int y,Color c )
 {
+	/*
+	Modified this function to automatically clip and prevent anything from being drawn outside of the screen boundaries
 	assert( x >= 0 );
 	assert( x < int( Graphics::ScreenWidth ) );
 	assert( y >= 0 );
 	assert( y < int( Graphics::ScreenHeight ) );
-	pSysBuffer[Graphics::ScreenWidth * y + x] = c;
+	*/
+	if (x >= 0 && y >= 0 && x < int(Graphics::ScreenWidth) && y < int(Graphics::ScreenHeight))
+	{
+		pSysBuffer[Graphics::ScreenWidth * y + x] = c;
+	}
 }
 
 
@@ -357,4 +363,55 @@ std::wstring Graphics::Exception::GetErrorDescription() const
 std::wstring Graphics::Exception::GetExceptionType() const
 {
 	return L"Chili Graphics Exception";
+}
+
+//This method is depreciated and should not be used.  Will remove in the near future
+void Graphics::DrawSurface(int x, int y, const Surface & surface)
+{
+	const int width = surface.GetWidth();
+	const int height = surface.GetHeight();
+	for (int sy = 0; sy < height; sy++)
+	{
+		for (int sx = 0; sx < width; sx++)
+		{
+			PutPixel(x + sx, y + sy, surface.GetPixel(sx, sy));
+		}
+	}
+}
+
+void Graphics::DrawSurface(int x, int y, const Surface & surface, const Color& alpha, const bool reverseImage)
+{
+	const int width = surface.GetWidth();
+	const int height = surface.GetHeight();
+
+	if (reverseImage) {
+		for (int sy = 0; sy < height; sy++)
+		{
+			int rx = width - 1;
+			for (int sx = 0; sx < width; sx++)
+			{
+				//handle transparency
+				Color sourcePixelColor = surface.GetPixel(sx, sy);
+				if (sourcePixelColor != alpha)
+				{
+					PutPixel(x + rx, y + sy, surface.GetPixel(sx, sy));
+				}
+				rx -= 1;
+			}
+		}
+	}
+	else {
+		for (int sy = 0; sy < height; sy++)
+		{
+			for (int sx = 0; sx < width; sx++)
+			{
+				//handle transparency
+				Color sourcePixelColor = surface.GetPixel(sx, sy);
+				if (sourcePixelColor != alpha)
+				{
+					PutPixel(x + sx, y + sy, surface.GetPixel(sx, sy));
+				}
+			}
+		}
+	}
 }
