@@ -1,0 +1,4 @@
+[2017.12.17] Created project from https://github.com/planetchili/chili_framework.git and upgraded to Visual Studio 2017 using auto-magic tools.
+[2017.12.17] Built project successfully.
+[2017.12.17] Migrated project manually (cuz I couldn't get it to copy magically) into my own repository https://github.com/ectrimble20/CppGame.git
+[2017.12.17] Building and checking in as master branch
