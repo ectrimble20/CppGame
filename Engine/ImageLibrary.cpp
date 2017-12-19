@@ -1,5 +1,11 @@
 #include "ImageLibrary.h"
 
+
+ImageLibrary::ImageLibrary()
+{
+	preload();
+}
+
 ImageLibrary::~ImageLibrary()
 {
 	//since we're storing everything via ptr's on the heap, we need to go through and destroy all the color arrays.
@@ -162,4 +168,56 @@ void ImageLibrary::deleteImage(std::string imageKey)
 	images.erase(imageKey);
 }
 
+void ImageLibrary::preload()
+{
+	ImportSingleImage("FontLucida", "/Images/Font_Lucida_26pt_32x32_32x3y.bmp");
+	//std::string key, int w, int h, int x, int y
+	SpriteSheetCell * man1 = new SpriteSheetCell[12];
+	man1[0] = SpriteSheetCell("man1_front_idle", 32, 32, 0, 0);
+	man1[1] = SpriteSheetCell("man1_front_walk1", 32, 32, 32, 0);
+	man1[2] = SpriteSheetCell("man1_front_walk2", 32, 32, 64, 0);
+	man1[3] = SpriteSheetCell("man1_back_idle", 32, 32, 0, 32);
+	man1[4] = SpriteSheetCell("man1_back_walk1", 32, 32, 32, 32);
+	man1[5] = SpriteSheetCell("man1_back_walk2", 32, 32, 64, 32);
+	man1[6] = SpriteSheetCell("man1_left_idle", 32, 32, 0, 64);
+	man1[7] = SpriteSheetCell("man1_left_walk1", 32, 32, 32, 64);
+	man1[8] = SpriteSheetCell("man1_left_walk2", 32, 32, 64, 64);
+	man1[9] = SpriteSheetCell("man1_right_idle", 32, 32, 0, 96);
+	man1[10] = SpriteSheetCell("man1_right_walk1", 32, 32, 32, 96);
+	man1[11] = SpriteSheetCell("man1_right_walk2", 32, 32, 64, 96);
+	ImportSpriteSheet("Images/man3_32x32_4dir_3frame_idle_and_walk_rdy.bmp", man1, 12);
+	delete[] man1;
 
+	SpriteSheetCell * man2 = new SpriteSheetCell[12];
+	man2[0] = SpriteSheetCell("man2_front_idle", 32, 32, 0, 0);
+	man2[1] = SpriteSheetCell("man2_front_walk1", 32, 32, 32, 0);
+	man2[2] = SpriteSheetCell("man2_front_walk2", 32, 32, 64, 0);
+	man2[3] = SpriteSheetCell("man2_back_idle", 32, 32, 0, 32);
+	man2[4] = SpriteSheetCell("man2_back_walk1", 32, 32, 32, 32);
+	man2[5] = SpriteSheetCell("man2_back_walk2", 32, 32, 64, 32);
+	man2[6] = SpriteSheetCell("man2_left_idle", 32, 32, 0, 64);
+	man2[7] = SpriteSheetCell("man2_left_walk1", 32, 32, 32, 64);
+	man2[8] = SpriteSheetCell("man2_left_walk2", 32, 32, 64, 64);
+	man2[9] = SpriteSheetCell("man2_right_idle", 32, 32, 0, 96);
+	man2[10] = SpriteSheetCell("man2_right_walk1", 32, 32, 32, 96);
+	man2[11] = SpriteSheetCell("man2_right_walk2", 32, 32, 64, 96);
+	ImportSpriteSheet("Images/man2_32x32_4dir_3frame_idle_and_walk_rdy.bmp", man2, 12);
+	delete[] man2;
+
+
+	SpriteSheetCell * man3 = new SpriteSheetCell[12];
+	man3[0] = SpriteSheetCell("man_front_idle", 32, 32, 0, 0);
+	man3[1] = SpriteSheetCell("man_front_walk1", 32, 32, 32, 0);
+	man3[2] = SpriteSheetCell("man_front_walk2", 32, 32, 64, 0);
+	man3[3] = SpriteSheetCell("man_back_idle", 32, 32, 0, 32);
+	man3[4] = SpriteSheetCell("man_back_walk1", 32, 32, 32, 32);
+	man3[5] = SpriteSheetCell("man_back_walk2", 32, 32, 64, 32);
+	man3[6] = SpriteSheetCell("man_left_idle", 32, 32, 0, 64);
+	man3[7] = SpriteSheetCell("man_left_walk1", 32, 32, 32, 64);
+	man3[8] = SpriteSheetCell("man_left_walk2", 32, 32, 64, 64);
+	man3[9] = SpriteSheetCell("man_right_idle", 32, 32, 0, 96);
+	man3[10] = SpriteSheetCell("man_right_walk1", 32, 32, 32, 96);
+	man3[11] = SpriteSheetCell("man_right_walk2", 32, 32, 64, 96);
+	ImportSpriteSheet("Images/man_32x32_4dir_3frame_idle_and_walk_rdy.bmp", man3, 12);
+	delete[] man3;
+}

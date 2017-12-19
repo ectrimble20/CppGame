@@ -5,7 +5,7 @@ class Rect
 {
 public:
 	Rect() = delete;
-	Rect(int width, int height, Vector2& centerPosition);
+	Rect(float width, float height, Vector2& centerPosition);
 	~Rect();
 	float GetWidth() const { return width; };
 	float GetHeight() const { return height; };
@@ -18,9 +18,9 @@ private:
 	const float width;
 	const float height;
 	Vector2 position;
-	int x0;
-	int x1;
-	int y0;
-	int y1;
+	float x0;
+	float x1;
+	float y0;
+	float y1;
 };
 

@@ -24,7 +24,9 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	imageLib(ImageLibrary()),
+	holder(Surface(0,0))
 {
 }
 
@@ -42,4 +44,11 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	//Test code to see if my stupid image lib is working
+	holder = Surface(imageLib.SeekImage("man1_front_idle"));
+	gfx.DrawSurface(32, 32, holder, Colors::Magenta, false);
+	holder = Surface(imageLib.SeekImage("man2_front_idle"));
+	gfx.DrawSurface(64, 32, holder, Colors::Magenta, false);
+	holder = Surface(imageLib.SeekImage("man_front_idle"));
+	gfx.DrawSurface(96, 32, holder, Colors::Magenta, false);
 }

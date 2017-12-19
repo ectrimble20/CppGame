@@ -140,5 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="WorkNotes.txt" />
+    <Text Include="TaskList.txt" />
   </ItemGroup>
 </Project>

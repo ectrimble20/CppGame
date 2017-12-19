@@ -35,7 +35,7 @@ struct SpriteSheetCell
 class ImageLibrary
 {
 public:
-	ImageLibrary() = default;
+	ImageLibrary();
 	~ImageLibrary();
 	void ImportSingleImage(std::string imageKey, std::string imagePath);
 	void ImportSpriteSheet(std::string imagePath, SpriteSheetCell * sheetCellInformation, int numberOfCells);
@@ -48,5 +48,8 @@ private:
 	std::map<std::string, BitmapImage> images;
 	void loadImageIntoMap(BitmapImage imageInfo);
 	void deleteImage(std::string imageKey);
+	//This function loads anything we want preloaded just by creating the image class
+	//Add any images wanted here
+	void preload();  
 };
 

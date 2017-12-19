@@ -1,0 +1,10 @@
+Key:
+[ ]  New/Not started		[P]  Proof-of-concept		[W]  Working		[X]  Abandoned		[T]	 In Testing		[C]  Completed and Tested	[I]  Fully implemented
+
+
+
+[C] Image Drawing, loading BMP images and drawing to a point on screen
+[ ] Buttons
+[ ] Menu
+[ ] Logical Game objects
+[ ] Game object collision handling/detection implemented

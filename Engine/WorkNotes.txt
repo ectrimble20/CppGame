@@ -3,3 +3,6 @@
 [2017.12.17] Migrated project manually (cuz I couldn't get it to copy magically) into my own repository https://github.com/ectrimble20/CppGame.git
 [2017.12.17] Building and checking in as master branch
 [2017.12.17] Adding some of the classes I've worked on using the Chili Framework for implementation into my game.
+[2017.12.19] Reworked Rect class to be a logic container rather than an extension of the Surface.
+[2017.12.19] Converted Rect to use float rather than int because positions etc are all float based with the Vector2 class
+[2017.12.19] Tested SpriteSheet imports, setup preload for 4 images including a font I created.

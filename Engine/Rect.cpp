@@ -2,7 +2,7 @@
 
 
 
-Rect::Rect(int width, int height, Vector2 & centerPosition) : width(width), height(height), position(centerPosition)
+Rect::Rect(float width, float height, Vector2 & centerPosition) : width(width), height(height), position(centerPosition)
 {
 	UpdateBounds();
 }

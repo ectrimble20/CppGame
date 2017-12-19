@@ -241,6 +241,7 @@
     <Image Include="Chili.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="TaskList.txt" />
     <Text Include="WorkNotes.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
