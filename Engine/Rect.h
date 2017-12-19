@@ -5,24 +5,22 @@ class Rect
 {
 public:
 	Rect() = delete;
-	Rect(const Vector2& topLeft, const Vector2& bottomRight);
+	Rect(int width, int height, Vector2& centerPosition);
 	~Rect();
-	float GetX0() const { return x0; };
-	float GetY0() const { return y0; };
-	float GetX1() const { return x1; };
-	float GetY1() const { return y1; };
 	float GetWidth() const { return width; };
 	float GetHeight() const { return height; };
-	void UpdatePosition(Vector2& newPosition);
+	Vector2 GetPosition() const { return position; };
+	void SetPosition(Vector2& p);
 	bool CheckCollision(Rect other);
 	bool CheckCollision(Vector2& position);
-	Vector2 GetCenter() const;
 private:
-	float x0;
-	float y0;
-	float x1;
-	float y1;
+	void UpdateBounds();
 	const float width;
 	const float height;
+	Vector2 position;
+	int x0;
+	int x1;
+	int y0;
+	int y1;
 };
 
