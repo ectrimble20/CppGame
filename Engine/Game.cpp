@@ -53,7 +53,13 @@ void Game::ComposeFrame()
 	holder = Surface(imageLib.SeekImage("man_front_idle"));
 	gfx.DrawSurface(96, 32, holder, Colors::Magenta, false);
 	//okay so lets try to write something to the screen with our broke ass font class.
-	std::string teststr = "D";
-	holder = font.StrToSurface(teststr, Colors::White);
-	gfx.DrawSurface(32, 256, holder, Colors::Magenta, false);
+	//okay so we're going to test out Font import method now since we're using our existing sprite sheet method to import it
+	holder = Surface(imageLib.SeekImage("Lucida_33")); //should draw an A
+	gfx.DrawSurface(32, 128, holder, Colors::Magenta, false);
+	holder = Surface(imageLib.SeekImage("Lucida_34")); //should draw an B
+	gfx.DrawSurface(64, 128, holder, Colors::Magenta, false);
+	holder = Surface(imageLib.SeekImage("Lucida_35")); //should draw an C
+	gfx.DrawSurface(96, 128, holder, Colors::Magenta, false);
+	holder = Surface(imageLib.SeekImage("Lucida_36")); //should draw an D
+	gfx.DrawSurface(128, 128, holder, Colors::Magenta, false);
 }

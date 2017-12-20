@@ -11,6 +11,7 @@ Font::~Font()
 {
 }
 
+//This is being abandoned, we'll tie into the imagelib stuff eventually
 Surface Font::StrToSurface(std::string s, Color c)
 {
 	//Alright first things first, we need to figure out the dimensions of the string.  We know

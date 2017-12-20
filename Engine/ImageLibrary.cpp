@@ -170,7 +170,10 @@ void ImageLibrary::deleteImage(std::string imageKey)
 
 void ImageLibrary::preload()
 {
-	ImportSingleImage("FontLucida", "Images/Font_Lucida_26pt_32x32_32x3y.bmp");
+	ImportFontImages("Lucida","Images/Font_Lucida_26pt_32x32_32x3y.bmp",32,32,32,3);
+	//I think we'll make a function specifically to load font's, we'll know their size, thier start and end points
+	//and having them as individual images is no worse than having a single large image.
+
 	//std::string key, int w, int h, int x, int y
 	SpriteSheetCell * man1 = new SpriteSheetCell[12];
 	man1[0] = SpriteSheetCell("man1_front_idle", 32, 32, 0, 0);
@@ -220,4 +223,35 @@ void ImageLibrary::preload()
 	man3[11] = SpriteSheetCell("man_right_walk2", 32, 32, 64, 96);
 	ImportSpriteSheet("Images/man_32x32_4dir_3frame_idle_and_walk_rdy.bmp", man3, 12);
 	delete[] man3;
+}
+
+void ImageLibrary::ImportFontImages(std::string fontKey, std::string fontImage, int glyphWidth, int glyphHeight, int columns, int rows)
+{
+	//so we know our font's will be " " through ~ on the ANSII table which is 32 through 126.
+	//We can minus 32 from each letter which gives us 0 - 94 (technically 0-95 but the 127 char is DEL and we don't show that).
+	//each row will contain X columns and each image will have X rows, generally, with a normal ANSII table it's 32x3.
+	//we'll leave it as variables in case we change it at some point.
+	//To keep track of a key, we'll use "fontKey" + "_" + character code.  So for instance A, which is 65, will become
+	//FONTNAME_30, because we will subtract 32 from 65 so our characters start at 0.
+	//BitmapImage fontImage = SeekImage(fontKey); we don't need to do this, we can just build a SheetCell array and load it without the base image
+	//unsigned int charRemove = 32; //so it's not hard coded into the code itself //unused
+	int i = 0;
+	int x = 0;
+	int y = 0;
+	SpriteSheetCell * fontCells = new SpriteSheetCell[columns * rows];
+	for (int r = 0; r < rows; r++)
+	{
+		for (int c = 0; c < columns; c++)
+		{
+			//unsigned char ch = i; //unused
+			std::string cellName = fontKey + "_" + std::to_string(i);
+			fontCells[i] = SpriteSheetCell(cellName, glyphWidth, glyphHeight, x, y);
+			x += glyphWidth;
+			i += 1; //should remember to increment the damn array
+		}
+		x = 0;
+		y += glyphHeight;
+	}
+	ImportSpriteSheet(fontImage, fontCells, (columns * rows));
+	delete[] fontCells; //clean up our heap array.
 }

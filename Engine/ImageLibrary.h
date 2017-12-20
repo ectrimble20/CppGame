@@ -50,6 +50,7 @@ private:
 	void deleteImage(std::string imageKey);
 	//This function loads anything we want preloaded just by creating the image class
 	//Add any images wanted here
-	void preload();  
+	void preload();
+	void ImportFontImages(std::string fontKey, std::string fontImage, int glyphWidth, int glyphHeight, int columns, int rows);
 };
 
