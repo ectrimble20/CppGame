@@ -26,6 +26,7 @@
 #include "ImageLibrary.h"
 #include "Surface.h"
 #include "Colors.h"
+#include "Font.h"
 
 class Game
 {
@@ -45,6 +46,7 @@ private:
 	Graphics gfx;
 	ImageLibrary imageLib;
 	Surface holder;
+	Font font;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

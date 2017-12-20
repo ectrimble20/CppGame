@@ -26,7 +26,8 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	imageLib(ImageLibrary()),
-	holder(Surface(0,0))
+	holder(Surface(0,0)),
+	font(Font(imageLib.SeekImage("FontLucida")))
 {
 }
 
@@ -51,4 +52,8 @@ void Game::ComposeFrame()
 	gfx.DrawSurface(64, 32, holder, Colors::Magenta, false);
 	holder = Surface(imageLib.SeekImage("man_front_idle"));
 	gfx.DrawSurface(96, 32, holder, Colors::Magenta, false);
+	//okay so lets try to write something to the screen with our broke ass font class.
+	std::string teststr = "D";
+	holder = font.StrToSurface(teststr, Colors::White);
+	gfx.DrawSurface(32, 256, holder, Colors::Magenta, false);
 }

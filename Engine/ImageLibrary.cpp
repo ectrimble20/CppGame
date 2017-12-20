@@ -170,7 +170,7 @@ void ImageLibrary::deleteImage(std::string imageKey)
 
 void ImageLibrary::preload()
 {
-	ImportSingleImage("FontLucida", "/Images/Font_Lucida_26pt_32x32_32x3y.bmp");
+	ImportSingleImage("FontLucida", "Images/Font_Lucida_26pt_32x32_32x3y.bmp");
 	//std::string key, int w, int h, int x, int y
 	SpriteSheetCell * man1 = new SpriteSheetCell[12];
 	man1[0] = SpriteSheetCell("man1_front_idle", 32, 32, 0, 0);
