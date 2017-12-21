@@ -27,8 +27,12 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	imageLib(ImageLibrary()),
 	holder(Surface(0,0)),
-	font(Font(imageLib))
+	font(Font(imageLib, Colors::Magenta, Colors::White))
 {
+	std::string t = "Test String\nNext Line\nAnother Line";
+	//expect this to be 384 X 32 with 12,288 pixels.
+	//Surface tS = font.GetTextSurface(t, "Lucida", 32);
+	holder = font.GetTextSurface(t, "Luci_White",10,16);
 }
 
 void Game::Go()
@@ -64,8 +68,8 @@ void Game::ComposeFrame()
 	holder = Surface(imageLib.SeekImage("Lucida_36")); //should draw an D
 	gfx.DrawSurface(128, 128, holder, Colors::Magenta, false);
 	*/
-	std::string t = "Test String";
+	//std::string t = "Test String";
 	//expect this to be 384 X 32 with 12,288 pixels.
-	Surface tS = font.GetTextSurface(t, "Lucida", 32);
-	gfx.DrawSurface(32, 32, tS, Colors::Magenta, false);
+	//Surface tS = font.GetTextSurface(t, "Lucida", 32);
+	gfx.DrawSurface(32, 32, holder, Colors::Magenta, false);
 }

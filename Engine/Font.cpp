@@ -4,26 +4,26 @@ Font::~Font()
 {
 }
 
-Surface Font::GetTextSurface(std::string text, std::string fontKey, int glyphSize)
+Surface Font::GetTextSurface(std::string text, std::string fontKey, int glyphWidth, int glyphHeight)
 {
 	//lets first figure out how large our string is so we can create a big enough array to hold everything
 	int wIdx = 0;
 	int width = 0;
-	int height = glyphSize;
+	int height = glyphHeight;
 	for (char c : text)
 	{
 		if (c == '\n')
 		{
 			//we need to note what our height is
-			height += glyphSize;
+			height += glyphHeight;
 			wIdx = 0;
 		}
 		else
 		{
 			wIdx += 1;
-			if ((wIdx * glyphSize) > width)
+			if ((wIdx * glyphWidth) > width)
 			{
-				width += glyphSize;
+				width += glyphWidth;
 			}
 		}
 	}
@@ -75,10 +75,10 @@ Surface Font::GetTextSurface(std::string text, std::string fontKey, int glyphSiz
 				std::string lookupKey = fontKey + "_" + std::to_string(cIdx);
 				BitmapImage letterImage = imageLb->SeekImage(lookupKey); //we'll want a check in here at some point but for now... nah
 				//this is where we actually want to copy the image's pixels into our image
-				int startX = sentenceIndexX * glyphSize;
-				int startY = sentenceIndexY * glyphSize;
-				int stopX = startX + glyphSize;
-				int stopY = startY + glyphSize;
+				int startX = sentenceIndexX * glyphWidth;
+				int startY = sentenceIndexY * glyphHeight;
+				int stopX = startX + glyphWidth;
+				int stopY = startY + glyphHeight;
 				int glyphX = 0;
 				int glyphY = 0;
 				for (int y = startY; y < stopY; y++)
@@ -86,10 +86,17 @@ Surface Font::GetTextSurface(std::string text, std::string fontKey, int glyphSiz
 					for (int x = startX; x < stopX; x++)
 					{
 						int pixelIdx = (y*width) + x;
-						int glyphIdx = (glyphY * glyphSize) + glyphX;
+						int glyphIdx = (glyphY * glyphWidth) + glyphX;
 						//if at any point our indexs get out of bounds I need to know
 						//copy the pixel
-						pTextPixels[pixelIdx] = letterImage.pPixels[glyphIdx];
+						//handle color correcting here
+						Color clr = letterImage.pPixels[glyphIdx];
+						//we only care if it's not our alpha color or our text color
+						if (clr != alpha && clr != textColor)
+						{
+							clr = textColor;
+						}
+						pTextPixels[pixelIdx] = clr;// letterImage.pPixels[glyphIdx];
 						glyphX += 1;
 					}
 					glyphY += 1;

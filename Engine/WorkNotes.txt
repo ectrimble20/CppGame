@@ -6,3 +6,5 @@
 [2017.12.19] Reworked Rect class to be a logic container rather than an extension of the Surface.
 [2017.12.19] Converted Rect to use float rather than int because positions etc are all float based with the Vector2 class
 [2017.12.19] Tested SpriteSheet imports, setup preload for 4 images including a font I created.
+[2017.12.20] Finally got Font to work how I wanted it to, able to print font to the screen. Working on making it less clunky
+[2017.12.20] Need to fix the Font class.  Currently only works for square fonts, needs to work with rectangluar fonts such as 7x16

@@ -174,6 +174,7 @@ void ImageLibrary::deleteImage(std::string imageKey)
 void ImageLibrary::preload()
 {
 	ImportFontImages("Lucida","Images/Font_Lucida_26pt_32x32_32x3y.bmp",32,32,32,3);
+	ImportFontImages("Luci_White", "Images/Lucida_white_320x48_10x16.bmp", 10, 16, 32, 3);
 	//I think we'll make a function specifically to load font's, we'll know their size, thier start and end points
 	//and having them as individual images is no worse than having a single large image.
 
