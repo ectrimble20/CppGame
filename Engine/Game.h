@@ -23,6 +23,9 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Surface.h"
+#include "ImageLibrary.h"
+#include "Colors.h"
 
 class Game
 {
@@ -40,6 +43,8 @@ private:
 private:
 	MainWindow& wnd;
 	Graphics gfx;
+	ImageLibrary imgLib;
+	Surface bgSurface;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

@@ -24,7 +24,9 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	imgLib(ImageLibrary()),
+	bgSurface(imgLib.SeekImage("charcoal64"))
 {
 }
 
@@ -65,4 +67,14 @@ void Game::ComposeFrame()
 	//expect this to be 384 X 32 with 12,288 pixels.
 	//Surface tS = font.GetTextSurface(t, "Lucida", 32);
 	//gfx.DrawSurface(32, 32, holder, Colors::Magenta, false);
+
+	//Should draw a background with our 64x64 image
+	for (int y = 0; y < gfx.ScreenHeight; y += 63)
+	{
+		for (int x = 0; x < gfx.ScreenWidth; x += 63)
+		{
+			gfx.DrawSurface(x, y, bgSurface);
+		}
+	}
+
 }
