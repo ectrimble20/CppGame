@@ -154,6 +154,7 @@ void ImageLibrary::CopyImageReplaceColor(std::string imageKey, std::string newIm
 
 void ImageLibrary::loadImageIntoMap(BitmapImage imageInfo)
 {
+	GameLogger::Log("Loaded image " + imageInfo.key);
 	images.insert(std::pair<std::string, BitmapImage>(imageInfo.key, imageInfo));
 }
 
@@ -169,6 +170,7 @@ void ImageLibrary::deleteImage(std::string imageKey)
 	}
 	//delete BitmapImage from images map
 	images.erase(imageKey);
+	GameLogger::Log("Unloaded image " + imageKey);
 }
 
 void ImageLibrary::preload()
@@ -176,6 +178,7 @@ void ImageLibrary::preload()
 	ImportSingleImage("charcoal64", "Images/charcoal_64x64.bmp");
 	ImportFontImages("Lucida","Images/Font_Lucida_26pt_32x32_32x3y.bmp",32,32,32,3);
 	ImportFontImages("Luci_White", "Images/Lucida_white_320x48_10x16.bmp", 10, 16, 32, 3);
+	ImportSingleImage("button_exit", "Images/button_exit_128x32.bmp");
 	//I think we'll make a function specifically to load font's, we'll know their size, thier start and end points
 	//and having them as individual images is no worse than having a single large image.
 
@@ -228,6 +231,7 @@ void ImageLibrary::preload()
 	man3[11] = SpriteSheetCell("man_right_walk2", 32, 32, 64, 96);
 	ImportSpriteSheet("Images/man_32x32_4dir_3frame_idle_and_walk_rdy.bmp", man3, 12);
 	delete[] man3;
+	GameLogger::Log("Preload images completed");
 }
 
 void ImageLibrary::ImportFontImages(std::string fontKey, std::string fontImage, int glyphWidth, int glyphHeight, int columns, int rows)
@@ -259,4 +263,5 @@ void ImageLibrary::ImportFontImages(std::string fontKey, std::string fontImage, 
 	}
 	ImportSpriteSheet(fontImage, fontCells, (columns * rows));
 	delete[] fontCells; //clean up our heap array.
+	GameLogger::Log("Font Image " + fontKey + " character images loaded");
 }

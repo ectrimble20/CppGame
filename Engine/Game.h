@@ -27,6 +27,9 @@
 #include "ImageLibrary.h"
 #include "Colors.h"
 #include "GameLogger.h"
+#include "Button.h"
+#include "Rect.h"
+#include "Vector2.h"
 
 class Game
 {
@@ -46,6 +49,9 @@ private:
 	Graphics gfx;
 	ImageLibrary imgLib;
 	Surface bgSurface;
+	Button testButton;
+	Surface testImgHideShow;
+	bool showText = false;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

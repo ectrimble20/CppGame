@@ -1,4 +1,5 @@
 #pragma once
+#include "GameLogger.h"
 #include "Vector2.h"
 
 class Rect
@@ -11,8 +12,8 @@ public:
 	float GetHeight() const { return height; };
 	Vector2 GetPosition() const { return position; };
 	void SetPosition(Vector2& p);
-	bool CheckCollision(Rect other);
-	bool CheckCollision(Vector2& position);
+	bool CheckCollision(const Rect& other) const;
+	bool CheckCollision(const Vector2& position) const;
 private:
 	void UpdateBounds();
 	const float width;

@@ -5,6 +5,7 @@
 #include <fstream>
 #include <map>
 #include <iterator>
+#include "GameLogger.h"
 
 struct BitmapImage
 {

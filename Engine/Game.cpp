@@ -21,12 +21,14 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd ),
+	wnd(wnd),
+	gfx(wnd),
 	imgLib(ImageLibrary()),
-	bgSurface(imgLib.SeekImage("charcoal64"))
+	bgSurface(imgLib.SeekImage("charcoal64")),
+	testImgHideShow(imgLib.SeekImage("man1_front_idle")),
+	testButton(Button(Rect(128.0f, 32.0f, Vector2(200.0f, 150.0f)), Surface(imgLib.SeekImage("button_exit"))))
 {
 	GameLogger::Log("Game Object Initialized");
 }
@@ -41,6 +43,24 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if (wnd.mouse.LeftIsPressed())
+	{
+		Vector2 clickSpot(wnd.mouse.GetPosX(), wnd.mouse.GetPosY());
+		if (testButton.Clicked(clickSpot))
+		{
+			GameLogger::Log("Click at " + std::to_string(wnd.mouse.GetPosX()) + "," + std::to_string(wnd.mouse.GetPosY()) + " was on the button");
+			if (showText) {
+				showText = false;
+			}
+			else {
+				showText = true;
+			}
+		}
+		else
+		{
+			GameLogger::Log("Click at " + std::to_string(wnd.mouse.GetPosX()) + "," + std::to_string(wnd.mouse.GetPosY()) + " was NOT on the button");
+		}
+	}
 }
 
 void Game::ComposeFrame()
@@ -74,8 +94,13 @@ void Game::ComposeFrame()
 	{
 		for (int x = 0; x < gfx.ScreenWidth; x += 63)
 		{
-			gfx.DrawSurface(x, y, bgSurface);
+			gfx.DrawSurface(x, y, bgSurface, Colors::Magenta, false);
 		}
+	}
+	gfx.DrawSurface(136.0f, 134.0f, testButton.GetSurface(), Colors::Magenta, false);
+	if (showText)
+	{
+		gfx.DrawSurface(400.0f, 150.0f, testImgHideShow, Colors::Magenta, false);
 	}
 
 }
