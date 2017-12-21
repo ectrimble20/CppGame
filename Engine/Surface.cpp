@@ -38,56 +38,6 @@ Surface & Surface::operator=(const Surface & rhs)
 	return *this;
 }
 
-//Creates a surface using a .bmp (bitmap) file
-Surface::Surface(const std::string & bitmapFilename)
-{
-	std::ifstream bitmapFile(bitmapFilename, std::ios::binary);
-	BITMAPFILEHEADER bitmapFileHeader;
-	bitmapFile.read(reinterpret_cast<char*>(&bitmapFileHeader), sizeof(bitmapFileHeader));
-
-	BITMAPINFOHEADER bitmapInfoHeader;
-	bitmapFile.read(reinterpret_cast<char*>(&bitmapInfoHeader), sizeof(bitmapInfoHeader));
-
-	bool rowOrderRevered = false;
-	bool is32Bit = bitmapInfoHeader.biBitCount == 32;
-	width = bitmapInfoHeader.biWidth;
-	height = bitmapInfoHeader.biHeight;
-	int yStart = height - 1;
-	int yEnd = 0;
-	int deltaY = -1;
-	if (height < 0)
-	{
-		rowOrderRevered = true;
-		height = -height; //convert back to a positive number
-		yStart = 0;
-		yEnd = height;
-		deltaY = 1;
-	}
-
-	pPixels = new Color[width * height];
-
-	bitmapFile.seekg(bitmapFileHeader.bfOffBits);
-	const int bitmapPadding = (4 - (width * 3) % 4) % 4;
-
-	//untested
-	for (yStart; yStart != yEnd; yStart += deltaY)
-	{
-		for (int x = 0; x < width; x++)
-		{
-			PutPixel(x, yStart, Color(bitmapFile.get(), bitmapFile.get(), bitmapFile.get()));
-			if (is32Bit)
-			{
-				bitmapFile.seekg(1, std::ios::cur);
-			}
-		}
-		//only need to adjust padding if it's 24 bit, 32 bit is always aligned
-		if (!is32Bit)
-		{
-			bitmapFile.seekg(bitmapPadding, std::ios::cur);
-		}
-	}	
-}
-
 //This is changing to use the BitmapImage struct from ImageLibrary
 Surface::Surface(BitmapImage imageData)
 {

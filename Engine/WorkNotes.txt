@@ -9,3 +9,5 @@
 [2017.12.20] Finally got Font to work how I wanted it to, able to print font to the screen. Working on making it less clunky
 [2017.12.20] Need to fix the Font class.  Currently only works for square fonts, needs to work with rectangluar fonts such as 7x16
 [2017.12.20] Fixed the Font class to work with mixed size fonts, also fixed a bug with the width/height causing weird behavior with unevenly sized fonts.
+[2017.12.21] Removed "Surface(const std::string& bitmapFilename);" construct from Surface, we do not build directly from a BMP now.  Removed fstream import as well.
+[2017.12.21] Built Singleton Logging class to allow me to log from anywhere to a single log file, should make debugging a bit easier now.

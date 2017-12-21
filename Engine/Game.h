@@ -26,6 +26,7 @@
 #include "Surface.h"
 #include "ImageLibrary.h"
 #include "Colors.h"
+#include "GameLogger.h"
 
 class Game
 {

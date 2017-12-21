@@ -8,3 +8,12 @@ Key:
 [ ] Menu
 [ ] Logical Game objects
 [ ] Game object collision handling/detection implemented
+[W] Implement detailed logging system
+	[C] GameLogger class created, partially tested
+	[W] Adding logging where needed within the application.
+
+
+
+Buggers
+
+[ ] DrawSurface appears to be 1px off

@@ -28,6 +28,7 @@ Game::Game( MainWindow& wnd )
 	imgLib(ImageLibrary()),
 	bgSurface(imgLib.SeekImage("charcoal64"))
 {
+	GameLogger::Log("Game Object Initialized");
 }
 
 void Game::Go()

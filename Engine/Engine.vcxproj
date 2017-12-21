@@ -144,6 +144,7 @@
     <ClInclude Include="Font.h" />
     <ClInclude Include="FrameTimer.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameLogger.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="ImageLibrary.h" />
     <ClInclude Include="Keyboard.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FrameTimer.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameLogger.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="ImageLibrary.cpp" />
     <ClCompile Include="Keyboard.cpp" />
