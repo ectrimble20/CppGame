@@ -24,15 +24,8 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd ),
-	imageLib(ImageLibrary()),
-	holder(Surface(0,0)),
-	font(Font(imageLib, Colors::Magenta, Colors::White))
+	gfx( wnd )
 {
-	std::string t = "Test String\nNext Line\nAnother Line";
-	//expect this to be 384 X 32 with 12,288 pixels.
-	//Surface tS = font.GetTextSurface(t, "Lucida", 32);
-	holder = font.GetTextSurface(t, "Luci_White",10,16);
 }
 
 void Game::Go()
@@ -71,5 +64,5 @@ void Game::ComposeFrame()
 	//std::string t = "Test String";
 	//expect this to be 384 X 32 with 12,288 pixels.
 	//Surface tS = font.GetTextSurface(t, "Lucida", 32);
-	gfx.DrawSurface(32, 32, holder, Colors::Magenta, false);
+	//gfx.DrawSurface(32, 32, holder, Colors::Magenta, false);
 }
