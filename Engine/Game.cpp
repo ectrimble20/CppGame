@@ -27,7 +27,7 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	imageLib(ImageLibrary()),
 	holder(Surface(0,0)),
-	font(Font(imageLib.SeekImage("FontLucida")))
+	font(Font(imageLib))
 {
 }
 
@@ -45,6 +45,7 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	/*
 	//Test code to see if my stupid image lib is working
 	holder = Surface(imageLib.SeekImage("man1_front_idle"));
 	gfx.DrawSurface(32, 32, holder, Colors::Magenta, false);
@@ -62,4 +63,9 @@ void Game::ComposeFrame()
 	gfx.DrawSurface(96, 128, holder, Colors::Magenta, false);
 	holder = Surface(imageLib.SeekImage("Lucida_36")); //should draw an D
 	gfx.DrawSurface(128, 128, holder, Colors::Magenta, false);
+	*/
+	std::string t = "Test String";
+	//expect this to be 384 X 32 with 12,288 pixels.
+	Surface tS = font.GetTextSurface(t, "Lucida", 32);
+	gfx.DrawSurface(32, 32, tS, Colors::Magenta, false);
 }

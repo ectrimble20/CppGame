@@ -12,8 +12,11 @@ ImageLibrary::~ImageLibrary()
 	std::map<std::string, BitmapImage>::iterator i;
 	for (i = images.begin(); i != images.end(); i++)
 	{
-		delete[] i->second.pPixels;
-		i->second.pPixels = nullptr;
+		if (i->second.pPixels != nullptr)
+		{
+			delete[] i->second.pPixels;
+			i->second.pPixels = nullptr;
+		}
 	}
 }
 

@@ -15,7 +15,9 @@ public:
 	Surface(BitmapImage imageData);
 	~Surface();
 	void PutPixel(int x, int y, Color c);
+	void PutPixel(int index, Color c);
 	Color GetPixel(int x, int y) const;
+	Color GetPixel(int index) const;
 	int GetWidth() const { return width; };
 	int GetHeight() const { return height; };
 private:

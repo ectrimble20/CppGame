@@ -116,7 +116,17 @@ void Surface::PutPixel(int x, int y, Color c)
 	pPixels[(y * width) + x] = c;
 }
 
+void Surface::PutPixel(int index, Color c)
+{
+	pPixels[index] = c;
+}
+
 Color Surface::GetPixel(int x, int y) const
 {
 	return pPixels[(y * width) + x];
+}
+
+Color Surface::GetPixel(int index) const
+{
+	return pPixels[index];
 }
