@@ -26,6 +26,7 @@ void ImageLibrary::ImportSingleImage(std::string imageKey, std::string imagePath
 	//exit if we failed to open - TODO log this error
 	if (!bitmapFile)
 	{
+		GameLogger::Log("Failed to open image " + imagePath + " operation was aborted but process is continuing");
 		return;
 	}
 	BITMAPFILEHEADER bitmapFileHeader;

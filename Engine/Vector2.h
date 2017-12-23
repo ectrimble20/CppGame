@@ -17,9 +17,10 @@ public:
 	//Converted these to accessors
 	float GetX() const { return x; };
 	float GetY() const { return y; };
+	//These are now redundant, Rect's operate on floats now
 	//adding these for use with Rect which operates in exact numbers.
-	int GetXInt() const { return (int)x; };
-	int GetYInt() const { return (int)y; };
+	//int GetXInt() const { return (int)x; };
+	//int GetYInt() const { return (int)y; };
 private:
 	float x;
 	float y;

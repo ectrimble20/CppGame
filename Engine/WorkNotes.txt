@@ -13,3 +13,8 @@
 [2017.12.21] Built Singleton Logging class to allow me to log from anywhere to a single log file, should make debugging a bit easier now.
 [2017.12.21] Updated some of Rect's methods for const correctness
 [2017.12.21] Added button class, working out how it's going to behave
+[2017.12.22] Rethinking how I'm handling drawing sprites.  I feel like I need a Sprite class to actually pull all the drawing and positioning together.  Right now, you need
+			 the ImageLibrary to hand you a BitmapImage which then needs to be mapped to a surface and then positioned with a Rect/Vector2 and then handed to the Graphics
+			 DrawSurface method before it's rendered.  My thought is to define everything about a Sprite in it's declaration, such as size, position, which image or images
+			 in the case of an animated gif to use.  Then extend the Sprite class for things like Buttons, Game elements/entities.  So that way I'm only having to actually
+			 manage the sprites rather than try to manage all these individual parts, the Sprite class will manage that for me.

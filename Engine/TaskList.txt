@@ -4,13 +4,14 @@ Key:
 
 
 [C] Image Drawing, loading BMP images and drawing to a point on screen
+[P] Sprite Class
 [ ] Buttons
 [ ] Menu
 [ ] Logical Game objects
 [ ] Game object collision handling/detection implemented
-[W] Implement detailed logging system
+[T] Implement detailed logging system
 	[C] GameLogger class created, partially tested
-	[W] Adding logging where needed within the application.
+	[T] Adding logging where needed within the application.
 
 
 
