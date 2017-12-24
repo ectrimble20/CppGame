@@ -158,6 +158,7 @@
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SoundEffect.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="StructLib.h" />
     <ClInclude Include="Surface.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector2D.h" />

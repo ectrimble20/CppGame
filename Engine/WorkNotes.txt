@@ -18,3 +18,4 @@
 			 DrawSurface method before it's rendered.  My thought is to define everything about a Sprite in it's declaration, such as size, position, which image or images
 			 in the case of an animated gif to use.  Then extend the Sprite class for things like Buttons, Game elements/entities.  So that way I'm only having to actually
 			 manage the sprites rather than try to manage all these individual parts, the Sprite class will manage that for me.
+[2017.12.24] I want to resolve the drawing issue with Graphics DrawSurface before I move on to other things.

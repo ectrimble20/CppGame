@@ -2,7 +2,7 @@
 #include "Colors.h"
 #include <string>
 #include "ChiliWin.h"
-#include "ImageLibrary.h"
+#include "StructLib.h"
 
 class Surface
 {

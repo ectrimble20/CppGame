@@ -7,7 +7,7 @@
 //Movement animations
 enum SpriteAnimationType
 {
-	IDLE_UP, IDLE_DOWN, IDLE_LEFT, IDLE_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, WALK_RIGHT
+	IDLE_DOWN, IDLE_UP, IDLE_LEFT, IDLE_RIGHT, WALK_DOWN, WALK_UP, WALK_LEFT, WALK_RIGHT
 };
 
 /*
@@ -35,5 +35,6 @@ protected:
 	//Vector2 velocity;
 	//Rect rect;
 	std::vector<Animation> images;
+	SpriteAnimationType animationType = SpriteAnimationType::IDLE_DOWN; //defaults to the idle down position
 };
 
